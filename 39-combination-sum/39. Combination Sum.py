@@ -1,34 +1,19 @@
 class Solution:
     def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
         res = []
-        subset = []
-        maps = []
 
-        def dfs():
-            s = sum(subset)
-            if s >target:
+        def dfs(i, cur, total):
+            if total == target:
+                res.append(cur.copy())
                 return
-            x = {}
-            for n in subset:
-                if n in x:
-                    x[n] += 1
-                else:
-                    x[n] = 1
+            if i >= len(nums) or total > target:
+                return
             
+            cur.append(nums[i])
+            dfs(i, cur, total + nums[i])
 
+            cur.pop()
+            dfs(i+1, cur, total)
 
-
-            if s == target and x not in maps:
-                res.append(subset.copy())
-                maps.append(x)
-
-    
-
-            for n in nums:
-                subset.append(n)
-                dfs()
-                subset.pop()
-
-        dfs()
+        dfs(0,[],0)
         return res
-            
