@@ -1,6 +1,7 @@
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
+        print("test")
         candidates.sort() #SORT so you can easily increment through dupe elements
         def dfs(i, cur, total):
             if total == target:
