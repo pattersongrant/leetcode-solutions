@@ -7,7 +7,7 @@ class Solution:
                 res.append(cur.copy())
                 return
 
-            if total > target or i >= len(candidates):
+            if total > target or i >= len(candidates) or candidates[i] > target:
                 return
 
             #include candidates[i]
