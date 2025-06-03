@@ -1,26 +1,28 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        longest = ""
-        if len(s) == 1:
-            return s[0]
-        for i, l1 in enumerate(s):
-            add = ""
-            for l2 in s[i+1:]:
-                add += l2
-                if self.isPalindrome(l1+add):
-                    if len(l1+add) > len(longest):
-                        longest = l1+add
-        
-        if longest == "":
-            return s[0]
-
-        return longest
-                
-
-
-
+        res = ""
+        resLen = 0
     
-    def isPalindrome(self, s):
-        return s == s[::-1]
+        
+        for i in range(len(s)):
+            l, r = i, i
 
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if r - l + 1 > resLen:
+                    resLen = r - l + 1
+                    res = s[l:r+1]      
+                l -= 1
+                r += 1
+
+
+            l, r = i, i+1
+
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                if r - l + 1 > resLen:
+                    resLen = r - l + 1
+                    res = s[l:r+1]      
+                l -= 1
+                r += 1
+
+        return res
         
