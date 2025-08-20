@@ -1,20 +1,23 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        return max(nums[0], self.helper(nums[1:]), self.helper(nums[:-1]))        
+        rob1, rob2 = 0, 0
+        if len(nums) ==1:
+            return nums[0]
 
+        for n in nums[1:len(nums)]:
+            temp = max(rob1 + n, rob2)
+            rob1 = rob2
+            rob2 = temp
 
-
-    def helper(self, nums):
+        firstmax = rob2
         rob1, rob2 = 0, 0
 
-
-        for n in nums:
-            newRob = max(rob1 + n, rob2)
+        for n in nums[0:len(nums)-1]:
+            temp = max(rob1 + n, rob2)
             rob1 = rob2
-            rob2 = newRob
-        return rob2
-        
-        
+            rob2 = temp
+
+        return max(rob2, firstmax)
         
         
         
