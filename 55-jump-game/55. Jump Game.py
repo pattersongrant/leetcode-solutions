@@ -1,16 +1,14 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        for i in range(len(nums) -2, -1, -1):
-            if nums[i] == 0:
-                if not self.anyJumpExistsPastEnd(nums[0:i+1]):
-                    return False
-        return True
+        maxIndex = nums[0]
 
-
-    def anyJumpExistsPastEnd(self, nums):
-        if len(nums) == 1 and nums[0] != 0:
+        if len(nums) == 1:
             return True
-        for i in range(len(nums) -2, -1, -1):
-            if nums[i] >= len(nums) - i:
-                return True
-        return False
+        for i in range(len(nums)-1):
+            if i + nums[i] > maxIndex:
+                maxIndex = i + nums[i]
+            if nums[i] == 0:
+                if not maxIndex >= i+1:
+                    return False
+
+        return True
