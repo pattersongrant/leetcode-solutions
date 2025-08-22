@@ -5,6 +5,8 @@ class Solution:
     
 
         for j in range(0, len(s)):
+            if len(s)-j < maxLength:
+                break
             charSet = set()
             curLength = 0
             for i in range(j, len(s)):
