@@ -6,8 +6,7 @@ class Solution:
         for i, n in enumerate(nums):
             if target-n in hashmap:
                 return [i,hashmap[target-n]]
-            else:
-                hashmap[n] = i
+            hashmap[n] = i
 
 
 
