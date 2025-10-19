@@ -13,6 +13,7 @@ class Solution:
             q = collections.deque()
             visited.add((r, c))
             q.append((r, c))
+            grid[r][c] = "0"
 
             while q:
                 directions = [(1,0), (-1,0), (0,1), (0,-1)]
@@ -25,6 +26,7 @@ class Solution:
                         (r1+x, c1+y) not in visited):
                         q.append((r1+x, c1+y))
                         visited.add((r1+x, c1+y))
+                        grid[r1+x][c1+y] = "0"
                         
             
 
