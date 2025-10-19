@@ -18,8 +18,8 @@ class Solution:
                 
                 for x, y in directions:
 
-                    if (r1+x in range(rows) and 
-                        c1+y in range(cols) and 
+                    if ((r1+x >= 0 and r1+x < rows) and 
+                        (c1+y >= 0 and c1+y < cols) and 
                         grid[r1+x][c1+y] == "1"):
                         q.append((r1+x, c1+y))
                         grid[r1+x][c1+y] = "0"
