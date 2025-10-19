@@ -20,6 +20,7 @@ class Solution:
                 r1, c1 = q.popleft()
                 
                 for x, y in directions:
+
                     if (r1+x in range(rows) and 
                         c1+y in range(cols) and 
                         grid[r1+x][c1+y] == "1" and
