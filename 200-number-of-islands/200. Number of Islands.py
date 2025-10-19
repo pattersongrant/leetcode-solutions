@@ -6,12 +6,10 @@ class Solution:
         rows = len(grid)
         cols = len(grid[0])
 
-        visited = set()
         islands = 0
 
         def bfs(r, c):
             q = collections.deque()
-            visited.add((r, c))
             q.append((r, c))
             grid[r][c] = "0"
 
@@ -20,11 +18,12 @@ class Solution:
                 r1, c1 = q.popleft()
                 
                 for x, y in directions:
-                    if r1+x not in range(rows) or c1+y not in range(cols) or grid[r1+x][c1+y] == "0" or (r1+x, c1+y) in visited:
-                        continue
-                    q.append((r1+x, c1+y))
-                    visited.add((r1+x, c1+y))
-                    grid[r1+x][c1+y] = "0"
+
+                    if (r1+x in range(rows) and 
+                        c1+y in range(cols) and 
+                        grid[r1+x][c1+y] == "1"):
+                        q.append((r1+x, c1+y))
+                        grid[r1+x][c1+y] = "0"
                         
             
 
