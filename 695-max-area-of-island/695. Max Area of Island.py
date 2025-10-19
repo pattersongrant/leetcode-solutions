@@ -14,8 +14,8 @@ class Solution:
                 r, c = q.popleft()
                 
                 for dr, dc in directions:
-                    if ((r + dr) in range(len(grid)) and 
-                        (c + dc) in range(len(grid[0])) and
+                    if (0 <= (r + dr) and (r+dr) < len(grid) and 
+                        0 <= (c + dc) and (c+dc) < len(grid[0]) and
                         grid[r+dr][c+dc] == 1):
                         a += 1
                         q.append(((r+dr), (c+dc)))
