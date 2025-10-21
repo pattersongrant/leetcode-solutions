@@ -1,7 +1,11 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        nums.append(0) #dummy at end
-        for i in range(len(nums) - 4 , -1, -1):
-            nums[i] = nums[i] + max(nums[i+2], nums[i+3])
+        rob1, rob2 = 0, 0
 
-        return max(nums[0], nums[1])
+
+        for n in nums:
+            temp = max(n + rob1, rob2)
+            rob1 = rob2
+            rob2 = temp
+
+        return rob2
