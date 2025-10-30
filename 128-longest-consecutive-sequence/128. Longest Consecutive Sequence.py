@@ -17,7 +17,7 @@ class Solution:
             return 0
         res = 1
         
-        for n in nums:
+        for n in numSet:
             if n - 1 in numSet:
                 continue
             nxtExists = True
@@ -28,8 +28,6 @@ class Solution:
             while nxtExists:
                 if k+1 in numSet:
                     count += 1
-                    if n == minN:
-                        numSet.remove(k+1)
                     k+=1
                     res = max(count, res)
                     continue
