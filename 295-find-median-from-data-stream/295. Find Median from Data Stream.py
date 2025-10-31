@@ -12,11 +12,11 @@ class MedianFinder:
             val = -heapq.heappop(self.maxHeap)
             heapq.heappush(self.minHeap, val)
 
-        if (len(self.maxHeap) > len(self.minHeap)):
+        if (len(self.maxHeap) > len(self.minHeap)+1):
             val = -heapq.heappop(self.maxHeap)
             heapq.heappush(self.minHeap, val)
         
-        if (len(self.maxHeap) < len(self.minHeap)):
+        if (len(self.maxHeap) +1 < len(self.minHeap)):
             val = heapq.heappop(self.minHeap)
             heapq.heappush(self.maxHeap, -val)
 
