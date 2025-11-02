@@ -10,12 +10,12 @@ class Solution:
         def addQueue(r, c):
             if (r < 0 or r >= ROWS or c < 0 or c >= COLS or 
                 (r,c) in visited or grid[r][c] == 0):
-                return False
+                return
             visited.add((r, c))
             self.infected += 1
             grid[r][c] = 2
             q.append((r,c)) 
-            return True
+
 
         for r in range(ROWS):
             for c in range(COLS):
