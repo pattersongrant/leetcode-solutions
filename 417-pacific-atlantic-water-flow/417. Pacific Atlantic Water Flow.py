@@ -3,12 +3,15 @@ class Solution:
         ROWS, COLS = len(heights), len(heights[0])
         pac, atl = set(), set()
 
+        res = []
 
         def dfs(r, c, visit, prev):
             if (r < 0 or c < 0 or r == ROWS or c == COLS 
             or (r,c) in visit or prev > heights[r][c]):
                 return
             visit.add((r,c))
+            if (r,c) in pac and (r,c) in atl:
+                res.append([r,c])
             dfs(r+1, c, visit, heights[r][c])
             dfs(r-1, c, visit, heights[r][c])
             dfs(r, c+1, visit, heights[r][c])
@@ -21,13 +24,7 @@ class Solution:
         for r in range(ROWS): #dfs each in first and last col
             dfs(r, 0, pac, heights[r][0]) 
             dfs(r, COLS-1, atl, heights[r][COLS-1])
-
-        res = []
-        for r in range(ROWS):
-            for c in range(COLS):
-                if (r,c) in pac and (r,c) in atl:
-                    res.append([r,c])
-
+        
         return res
         
         
