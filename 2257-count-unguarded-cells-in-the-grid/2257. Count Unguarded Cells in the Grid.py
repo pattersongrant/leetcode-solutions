@@ -20,16 +20,15 @@ class Solution:
 
             graph[r][c] = "O"
 
-            if vert:
-                if prev != (r+1, c):
-                    dfs(r+1, c, True, (r,c))
-                if prev != (r-1, c):
-                    dfs(r-1, c, True, (r,c))
-            if not vert:
-                if prev != (r, c+1):
-                    dfs(r, c+1, False, (r,c))
-                if prev != (r, c-1):    
-                    dfs(r, c-1, False, (r,c))
+
+            if prev == (r-1, c): #came from above
+                dfs(r+1, c, True, (r,c))
+            elif prev == (r+1, c):
+                dfs(r-1, c, True, (r,c))
+            elif prev == (r, c-1):
+                dfs(r, c+1, False, (r,c))
+            else: 
+                dfs(r, c-1, False, (r,c))
 
 
         for r in range(ROWS):
