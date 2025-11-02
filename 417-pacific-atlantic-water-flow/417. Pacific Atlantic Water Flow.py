@@ -11,6 +11,7 @@ class Solution:
             visit.add((r,c))
             if (r,c) in pac and (r,c) in atl:
                 res.append([r,c])
+                
             dfs(r+1, c, visit, heights[r][c])
             dfs(r-1, c, visit, heights[r][c])
             dfs(r, c+1, visit, heights[r][c])
