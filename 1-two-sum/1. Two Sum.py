@@ -1,19 +1,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
-        hashmap = {} #number : index
-    
+        hashmap = {}
+        #make dictionary with number : index
         for i, n in enumerate(nums):
-            
-            if target-n in hashmap:
-                return [i, hashmap[target-n]]
-            
-            if n not in hashmap:
-                hashmap[n] = i
-        
-
-            
-            
-                
-
-
+            diff=target-n
+            #check if the required number(diff) is in the hashmap already
+            if diff in hashmap:
+                return [hashmap[diff], i]
+                #if it is, return the correct answer by getting the index of the difference from hashmap(hashmap[diff]) and the index of the current number checking in the loop from nums (i).
+            hashmap[n]=i
+            #if the difference is not in the hashmap already, add the current number of the loop (n) to the hashmap and then go through the loop again checking the next number from nums
