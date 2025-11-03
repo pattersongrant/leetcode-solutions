@@ -6,8 +6,6 @@ class Solution:
         hashmap_s = Counter(s)
         hashmap_t = Counter(t)
 
-        
-        
         if len(hashmap_s) != len(hashmap_t):
             return False
 
