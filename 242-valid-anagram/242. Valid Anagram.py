@@ -3,20 +3,10 @@ class Solution:
         if len(t) != len(s):
             return False
 
-        hashmap_s = {}
-        hashmap_t = {}
+        hashmap_s = Counter(s)
+        hashmap_t = Counter(t)
 
-        for i in range(len(s)):
-            if s[i] not in hashmap_s:
-                hashmap_s[s[i]] = 1
-            else:
-                hashmap_s[s[i]] += 1
         
-        for i in range(len(t)):
-            if t[i] not in hashmap_t:
-                hashmap_t[t[i]] = 1
-            else:
-                hashmap_t[t[i]] += 1
         
         if len(hashmap_s) != len(hashmap_t):
             return False
