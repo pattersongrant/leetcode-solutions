@@ -8,13 +8,6 @@ class Solution:
 
         visit = set()
         def dfs(crs):
-            if crsToPre[crs] == []:
-                if crs not in taken:
-                    res.append(crs)
-                    taken.add(crs)
-                return True
-
-            
             if crs in visit:
                 return False
             
