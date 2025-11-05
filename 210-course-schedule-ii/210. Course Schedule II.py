@@ -7,16 +7,14 @@ class Solution:
             crsToPre[a].append(b)
 
         visit = set()
-        def dfs(crs):
+        def dfs(crs):            
             if crs in visit:
                 return False
             
             visit.add(crs)
             for pre in crsToPre[crs]:
                 if not dfs(pre): return False
-                if pre not in taken:
-                    res.append(pre)
-                    taken.add(pre)
+                
 
             crsToPre[crs] = []
             visit.remove(crs)
