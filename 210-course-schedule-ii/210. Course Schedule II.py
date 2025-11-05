@@ -17,7 +17,6 @@ class Solution:
                 if pre not in taken:
                     res.append(pre)
                     taken.add(pre)
-                
 
             crsToPre[crs] = []
             visit.remove(crs)
