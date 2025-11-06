@@ -8,7 +8,5 @@ class Solution:
                 odd = True
             if count[l] >= 2:
                 res += count[l] - (count[l] % 2)
-  
-            
         return res if not odd else res + 1
             
