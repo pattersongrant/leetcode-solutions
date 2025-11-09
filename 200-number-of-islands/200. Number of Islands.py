@@ -18,7 +18,6 @@ class Solution:
 
             while q:
                 r, c = q.popleft()
-                grid[r][c] = "0"
 
                 addQueue(r+1, c)
                 addQueue(r-1, c)
@@ -29,6 +28,7 @@ class Solution:
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == "1":
+                    grid[r][c] = "0"
                     bfs(r,c)
 
         return self.res
