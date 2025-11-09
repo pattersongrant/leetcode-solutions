@@ -13,8 +13,6 @@ class Solution:
                 q.append((r,c))
 
         def bfs(r, c):
-            nonlocal res
-            res += 1
             q.append((r,c))
 
             while q:
@@ -30,6 +28,7 @@ class Solution:
                 if grid[r][c] == "1":
                     grid[r][c] = "0"
                     bfs(r,c)
+                    res += 1
 
         return res
 
