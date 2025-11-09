@@ -1,8 +1,8 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
-
-        self.res = 0
+        
+        res = 0
 
         q = deque()
 
@@ -13,12 +13,12 @@ class Solution:
                 q.append((r,c))
 
         def bfs(r, c):
-            self.res += 1
+            nonlocal res
+            res += 1
             q.append((r,c))
 
             while q:
                 r, c = q.popleft()
-
                 addQueue(r+1, c)
                 addQueue(r-1, c)
                 addQueue(r, c+1)
@@ -31,6 +31,6 @@ class Solution:
                     grid[r][c] = "0"
                     bfs(r,c)
 
-        return self.res
+        return res
 
 
