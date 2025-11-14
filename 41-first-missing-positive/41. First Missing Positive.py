@@ -8,9 +8,9 @@ class Solution:
         length = len(nums)
 
         #first loop: set all 0's and negatives and too big vals to len()
-        for i in range(len(nums)):
+        for i in range(length):
             if nums[i] <= 0 or nums[i] > length:
-                nums[i] = abs(length)+1
+                nums[i] = length+1
                 continue
 
         #second loop: set all nums[n-1] to negative
