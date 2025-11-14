@@ -5,7 +5,9 @@ class Solution:
         cur = 0
         numSet = set(nums)
         uniqueNums = []
+        
         for n in numSet: uniqueNums.append(n)
+
         for n in uniqueNums:
             curCheck = n
 
