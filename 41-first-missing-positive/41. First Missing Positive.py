@@ -12,11 +12,10 @@ class Solution:
                 continue
 
         #second loop: set all nums[n-1] to negative
-        for n in nums:
-            abs_num = abs(n)
-            if n == len(nums)+1 or n == -(len(nums)+1): 
+        for i in range(len(nums)):
+            if nums[i] == len(nums)+1 or nums[i] == -(len(nums)+1): 
                 continue
-            nums[abs_num-1] = abs(nums[abs_num-1]) * -1
+            nums[abs(nums[i])-1] = abs(nums[abs(nums[i])-1]) * -1
 
 
         #third loop check range of possible and return first that index - 1 is positive
