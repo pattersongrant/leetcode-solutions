@@ -15,9 +15,8 @@ class Solution:
 
         #second loop: set all nums[n-1] to negative
         for i in range(length):
-            if nums[i] == length+1 or nums[i] == -(length+1): 
-                continue
-            nums[abs(nums[i])-1] = abs(nums[abs(nums[i])-1]) * -1
+            if abs(nums[i]) <= length:
+                nums[abs(nums[i])-1] = abs(nums[abs(nums[i])-1]) * -1
 
 
         #third loop check range of possible and return first that index - 1 is positive
