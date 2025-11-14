@@ -1,29 +1,26 @@
-class Solution:
-    def firstMissingPositive(self, nums: List[int]) -> int:
-        #must be able to use O(1) space.
-
-        #i: 0 1  2 3 4
-        #n: 2 0  4 1 0
-
-        length = len(nums)
-
-        #first loop: set all 0's and negatives and too big vals to len()
-        for i in range(length):
-            if nums[i] <= 0 or nums[i] > length:
-                nums[i] = length+1
-                continue
-
-        #second loop: set all nums[n-1] to negative
-        for i in range(length):
-            if abs(nums[i]) <= length:
-                nums[abs(nums[i])-1] = abs(nums[abs(nums[i])-1]) * -1
-
-
-        #third loop check range of possible and return first that index - 1 is positive
-        for i in range(1, length+1):
-            if nums[i-1] > 0:
-                return i
-
-        #else return len + 1
-
-        return len(nums) + 1
+class Solution(object):
+    def firstMissingPositive(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        
+        # Step 1: Clean up the input list
+        for i in range(n):
+            if nums[i] <= 0 or nums[i] > n:
+                nums[i] = n + 1  # We set invalid elements to a number greater than n
+        
+        # Step 2: Use index marking to track the presence of numbers
+        for num in nums:
+            abs_num = abs(num)
+            if abs_num <= n:
+                nums[abs_num - 1] = -abs(nums[abs_num - 1])  # Mark the number by making it negative
+        
+        # Step 3: Find the first missing positive number
+        for i in range(n):
+            if nums[i] > 0:
+                return i + 1
+        
+        # Step 4: If all numbers 1 to n are present, the answer is n + 1
+        return n + 1
