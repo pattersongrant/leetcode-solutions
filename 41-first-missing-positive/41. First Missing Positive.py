@@ -9,6 +9,7 @@ class Solution:
         for i in range(len(nums)):
             if nums[i] <= 0 or nums[i] > len(nums):
                 nums[i] = abs(len(nums))+1
+                continue
 
         #second loop: set all nums[n-1] to negative
         for n in nums:
