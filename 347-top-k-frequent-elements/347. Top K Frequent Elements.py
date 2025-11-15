@@ -2,10 +2,7 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         count = {}
 
-        bucket = []
-
-        for i in range(len(nums) + 1):
-            bucket.append([])
+        bucket = [[] for i in range(len(nums) + 1)]
 
         for n in nums:
             count[n] = count.get(n, 0) + 1
