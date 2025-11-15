@@ -1,59 +1,25 @@
 class Solution:
     def calculate(self, s: str) -> int:
-
-        def operate(num1, num2, op):
-            if op == "/":
-                return num1 // num2
-            if op == "*":
-                return num1 * num2
-            if op == "+":
-                return num1 + num2
-            if op == "-":
-                return num1 - num2
         
-        
-        
-        nums = []
-        opStack = []
+        stack = []
+        cur = 0
+        prevOp = "+"
 
-        l = 0
+        for i, c in enumerate(s):
 
-        for r in range(len(s)):
-            if s[r] in "+/*-":
-                nums.append(int(s[l:r]))
-                opStack.append(s[r])
-                l = r+1
-            if r == len(s)-1:
-                nums.append(int(s[l:r+1]))
+            if c.isdigit():
+                cur = cur * 10 + int(c)
 
-                print(nums)
-        print(opStack)
+            if c in "+-/*" or i == len(s) - 1:
+                if prevOp == "+":
+                    stack.append(cur)
+                if prevOp == "-":
+                    stack.append(-cur)
+                if prevOp == "*":
+                    stack[-1] *= cur
+                if prevOp == "/":
+                    stack[-1] = int(stack[-1] / cur)
+                prevOp = c
+                cur = 0
 
-
-        #3, 4, 6, 7, 9
-        #+, /, *, -
-
-
-
-        while len(nums) > 1:
-            divFound = False
-
-            i = 0
-            while i < len(opStack):
-                if opStack[i] in "+-": 
-                    i+=1
-                    continue
-                divFound = True
-                nums[i] = operate(nums[i], nums[i+1], opStack[i])
-                nums.pop(i+1)
-                opStack.pop(i)
-                
-
-            if not divFound:
-                for i in range(len(opStack)):
-                    nums[0] = operate(nums[0], nums[1], opStack[i])
-                    nums.pop(1)
-
-            
-        return nums[0]
-
+        return sum(stack)
