@@ -8,7 +8,6 @@ class Solution:
             if li[0] <= res[-1][1]:
                 res[-1][0] = min(res[-1][0], li[0])
                 res[-1][1] = max(res[-1][1], li[1])
-
             else:
                 res.append(li)
                     
