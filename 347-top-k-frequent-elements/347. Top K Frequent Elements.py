@@ -9,7 +9,10 @@ class Solution:
 
         for val in count:
             count_val = count[val]
-            bucket[count_val].append(val)
+            if bucket[count_val] == None:
+                bucket[count_val] = [val]
+            else:
+                bucket[count_val].append(val)
 
         res = []
         for i in range(len(bucket) - 1, -1, -1):
