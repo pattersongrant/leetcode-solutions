@@ -12,7 +12,6 @@ class Solution:
 
         for val in count:
             count_val = count[val]
-            print(count_val)
             if bucket[count_val] == None:
                 bucket[count_val] = [val]
             else:
