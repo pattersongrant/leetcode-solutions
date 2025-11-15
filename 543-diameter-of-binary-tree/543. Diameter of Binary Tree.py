@@ -4,21 +4,28 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:    
         self.res = 0
-        
-        
-        def maxDepth(curr):
-            if not curr:
+
+        #returns the height
+        def dfs(cur):
+            if cur == None:
                 return 0
 
-            left = maxDepth(curr.left)
-            right = maxDepth(curr.right)
+            left = dfs(cur.left)
+            right = dfs(cur.right)
 
-            self.res = max(self.res, left + right) # get max between old max dia and new
+            self.res = max(self.res, left+right)
+
             return 1 + max(left, right)
-
-        maxDepth(root)
-
+            
+        dfs(root)
         return self.res
+
+
+
+
+
+        
