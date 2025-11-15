@@ -5,19 +5,20 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-        
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
-
-
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        if root is None:
-            return 0
+        self.res = 0
         
-        maxAtNode = self.maxDepth(root.left) + self.maxDepth(root.right)
+        
+        def maxDepth(curr):
+            if not curr:
+                return 0
 
-        return max(maxAtNode, self.diameterOfBinaryTree(root.left), self.      diameterOfBinaryTree(root.right))
-        
-        
+            left = maxDepth(curr.left)
+            right = maxDepth(curr.right)
+
+            self.res = max(self.res, left + right) # get max between old max dia and new
+            return 1 + max(left, right)
+
+        maxDepth(root)
+
+        return self.res
