@@ -51,7 +51,7 @@ class Codec:
 
             return new
 
-        return dfs(10**5)
+        return dfs(float("inf"))
 
 
             
