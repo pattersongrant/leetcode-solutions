@@ -1,19 +1,32 @@
 class Solution:
     def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
-        res = []
+        #3 choices - include and go next, include and add again, skip
 
-        def dfs(i, cur, total):
-            if total == target:
-                res.append(cur.copy())
+
+        cur = []
+        resSet = set()
+
+        def dfs(i, curSum):
+            if i >= len(nums) or curSum >= target:
+                if curSum == target:
+                    resSet.add(tuple(cur.copy()))
                 return
-            if i >= len(nums) or total > target:
-                return
-            
+
+
             cur.append(nums[i])
-            dfs(i, cur, total + nums[i])
+            dfs(i, curSum + nums[i])
+
+            dfs(i+1, curSum + nums[i])
 
             cur.pop()
-            dfs(i+1, cur, total)
+            dfs(i+1, curSum)
 
-        dfs(0,[],0)
+        dfs(0, 0)
+
+        res = []
+
+        for tu in resSet:
+            res.append(list(tu))
         return res
+            
+            
