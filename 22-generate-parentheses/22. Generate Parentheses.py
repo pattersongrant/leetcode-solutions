@@ -27,10 +27,11 @@ class Solution:
 
             if len(cur) > n*2:
                 return
-            
             old = cur
-            cur += "("
-            dfs()
+            if len(cur) != n*2 -1:
+                
+                cur += "("
+                dfs()
             if cur != "":
                 cur = old
                 cur += ")"
