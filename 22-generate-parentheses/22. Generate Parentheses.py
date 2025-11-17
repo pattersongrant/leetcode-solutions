@@ -1,21 +1,51 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        stack = [] # stack 
         res = []
 
-        #recursive solution to go through all different routes
-        def backtrack(openN, closedN):
-            if openN == closedN == n: #if a complete and valid parentheses
-                res.append("".join(stack)) #turn the stack into a single string
-                return #go back to finish the previous function call
-            if openN < n:
-                stack.append("(")
-                backtrack(openN+1, closedN) #goes through again with 1 more open
-                stack.pop() #pop the last added bracket
-            if closedN < openN:
-                stack.append(")")
-                backtrack(openN, closedN+1) #goes through again with 1 more close
-                stack.pop()
-        backtrack(0,0) # run the function with default values
+        cur = ""
+        maxChar = n * 2
+
+        def isValid():
+            nonlocal cur
+            if not cur:
+                return False
+            seen = []
+            for c in cur:
+                if c == "(":
+                    seen.append(c)
+                else:
+                    if not seen:
+                        return False
+                    seen.pop()
+            return len(seen) == 0
+                    
+
+        def dfs():
+            nonlocal cur
+            if len(cur) == n*2 and isValid():
+
+                res.append(cur)
+
+            if len(cur) > n*2:
+                return
+            
+            old = cur
+            cur += "("
+            dfs()
+
+            cur = old
+            cur += ")"
+            dfs()
+
+        dfs()
+
         return res
+            
+
+            
+
+
+
+
+
         
