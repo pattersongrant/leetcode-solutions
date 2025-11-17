@@ -23,7 +23,6 @@ class Solution:
         def dfs():
             nonlocal cur
             if len(cur) == n*2 and isValid():
-
                 res.append(cur)
 
             if len(cur) > n*2:
@@ -32,10 +31,10 @@ class Solution:
             old = cur
             cur += "("
             dfs()
-
-            cur = old
-            cur += ")"
-            dfs()
+            if cur != "":
+                cur = old
+                cur += ")"
+                dfs()
 
         dfs()
 
