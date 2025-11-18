@@ -11,15 +11,13 @@ class Solution:
                 continue
 
             res = plus1
-            temp = plus2
-            plus2 = plus1
 
             if (i+1 < len(s) and ((s[i] == "1") or (s[i] == "2" and 
                 s[i+1] in "0123456"))):
 
-                res += temp
+                res += plus2
 
-            
+            plus2 = plus1
             plus1 = res
 
         return plus1
