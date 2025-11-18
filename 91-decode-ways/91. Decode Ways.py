@@ -1,10 +1,10 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        dp = {len(s) : 1} #cache to store num of ways at each index
+        dp = {len(s) : 1}
 
 
 
-        def dfs(i):
+        def dfs(i): #returns number of ways starting from this index
             if i in dp:
                 return dp[i]
 
@@ -13,13 +13,18 @@ class Solution:
             
             res = dfs(i+1)
 
-            if i + 1 < len(s) and (s[i] == "1" or 
-            (s[i] == "2" and s[i+1] in "0123456")):
+            if (i+1 < len(s) and ((s[i] == "1") or (s[i] == "2" and 
+                s[i+1] in "0123456"))):
                 res += dfs(i+2)
+        
             dp[i] = res
             return res
 
 
         return dfs(0)
+        
 
             
+
+
+
