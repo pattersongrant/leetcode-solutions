@@ -1,21 +1,13 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        countToGet = [float('inf')] * (amount + 1)
+        dp = [amount + 1] * (amount + 1)
+        dp[0] = 0
 
-        countToGet[0] = 0
 
-        for n in range(amount+1):
-            min_val = float('inf')
+        for a in range(1, amount+1):
             for c in coins:
-                if n-c >= 0:
-                    min_val = min(countToGet[n-c], min_val)
-            
-            if min_val != float('inf'):
-                countToGet[n] = min_val + 1
-        
-        if countToGet[amount] != float('inf'):
-            return countToGet[amount]
-            
-        return -1
+                if a - c >= 0:
+                    dp[a] = min(dp[a], 1 + dp[a-c])
 
-                    
+
+        return dp[amount] if dp[amount] != amount + 1 else -1
