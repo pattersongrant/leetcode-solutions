@@ -3,7 +3,7 @@ class Solution:
         #rr:
         #topdown
         # #ways to get to up + 1 plus # ways to get from left + 1
-        #base case: 0 is 0
+        #base case: 0 is 1
         ROWS, COLS = m, n
         
         memo = []
