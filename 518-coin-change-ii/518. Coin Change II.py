@@ -4,13 +4,15 @@ class Solution:
 
         memo = {} #(i, cur) : num ways
         def dfs(i, cur):
+            if cur == amount:
+                return 1
             if i >= len(coins) or cur > amount:
                 return 0
             if (i, cur) in memo:
                 return memo[i, cur]
-                
-            if cur == amount:
-                return 1
+
+
+
 
             res = 0
             res += dfs(i + 1, cur) #move forward
