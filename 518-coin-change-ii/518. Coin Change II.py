@@ -1,8 +1,8 @@
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         
+        memo = [[-1] * amount for _ in range(len(coins) + 1)] #(i, cur) : num ways
 
-        memo = [[-1 for _ in range(amount)] for _ in range(len(coins) + 1)] #(i, cur) : num ways
         def dfs(i, cur):
             if cur == amount:
                 return 1
@@ -19,6 +19,7 @@ class Solution:
             res += dfs(i, cur + coins[i]) #take
             memo[i][cur] = res
             return res
+
 
         return dfs(0, 0)
 
