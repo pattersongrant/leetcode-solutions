@@ -8,8 +8,7 @@ class Solution:
                 return 0
             if (i, cur) in memo:
                 return memo[i, cur]
-
-
+                
             if cur == amount:
                 return 1
 
