@@ -7,20 +7,13 @@ class Solution:
         def dfs(i, cur):
             if i == len(nums):
                 if cur == target:
-                    self.ways += 1
                     return 1
                 return 0
             if (i,cur) in memo:
-                self.ways += memo[(i, cur)]
                 return memo[(i,cur)]
-            res = 0
-            res += dfs(i + 1, cur - nums[i])
-            res += dfs(i + 1, cur + nums[i])
 
-            memo[(i, cur)] = res
+            memo[(i, cur)] = dfs(i + 1, cur - nums[i]) + dfs(i + 1, cur + nums[i])
 
-            return res
+            return memo[(i, cur)]
 
-        
-        dfs(0,0)
-        return self.ways
+        return dfs(0,0)
