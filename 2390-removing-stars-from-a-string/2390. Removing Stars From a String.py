@@ -6,8 +6,6 @@ class Solution:
                 arr.pop()
                 continue
             arr.append(c)
-            
-
 
         return "".join(arr)
 
