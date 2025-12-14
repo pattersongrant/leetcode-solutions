@@ -10,10 +10,7 @@ class Solution:
                 return 0
             if memo[i][cur] != -1:
                 return memo[i][cur]
-
-
-
-
+                
             res = 0
             res += dfs(i + 1, cur) #move forward
             res += dfs(i, cur + coins[i]) #take
