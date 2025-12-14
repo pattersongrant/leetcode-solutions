@@ -4,14 +4,14 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
-        nonzeros = []
 
-        for n in nums:
-            if n != 0:
-                nonzeros.append(n)
-
+        l = 0
         for i in range(len(nums)):
-            if i < len(nonzeros):
-                nums[i] = nonzeros[i]
-            else:
-                nums[i] = 0
+            if nums[i] != 0:
+                nums[l] = nums[i]
+                l+=1
+        
+        for i in range(len(nums) - 1, -1, -1):
+            if i == l-1:
+                break
+            nums[i] = 0
