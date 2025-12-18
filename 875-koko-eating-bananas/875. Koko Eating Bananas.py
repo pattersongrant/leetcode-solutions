@@ -10,16 +10,13 @@ class Solution:
 
 
         l, r = 1, max(piles)
-        res = -1
+        res = r
         while l <= r:
             time = 0
             m = (l + r) // 2
 
             for n in piles:
-                if n/m != n // m * 1.0:
-                    time += int((n // m) + 1.0)
-                else:
-                    time += n//m
+                time += math.ceil(n/m)
             if time <= h:
                 res = m
                 r = m - 1
