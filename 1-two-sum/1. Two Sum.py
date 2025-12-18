@@ -1,19 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        
-        hashmap = {} #number : index
-    
+        hashset = {}
+
         for i, n in enumerate(nums):
-            
-            if target-n in hashmap:
-                return [i, hashmap[target-n]]
-            
-            if n not in hashmap:
-                hashmap[n] = i
-        
-
-            
-            
-                
-
-
+            if target - n in hashset:
+                return [i, hashset[target-n]]
+            hashset[n] = i
