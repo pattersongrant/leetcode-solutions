@@ -19,11 +19,9 @@ class Solution:
                 else:
                     res.append([nums[i], nums[l], nums[r]])
                     l += 1
-                    r -= 1
-                    while l-1 >= 0 and l < len(nums) and nums[l] == nums[l-1]:
+                    while nums[l] == nums[l-1] and l<r:
                         l+= 1
-                    while r+1 < len(nums) and r >= 0 and nums[r] == nums[r+1]:
-                        r -= 1
+
                     
         return res
                 
