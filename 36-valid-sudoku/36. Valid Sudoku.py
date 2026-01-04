@@ -1,53 +1,20 @@
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        ROWS, COLS = len(board), len(board[0])
-        #arrays of sets
-        rows = [set() for r in range(ROWS)] #i.e rows[0] = set() of all in first row
-        cols = [set() for c in range(COLS)]
-        threes = [set() for i in range(9)]
-        
+        rows = collections.defaultdict(set)
+        cols = collections.defaultdict(set)
+        squares = collections.defaultdict(set) #keys are (r // 3, c//3)
+        #each square is a coordinate (0-2, 0-2)
 
-
-        for r in range(ROWS):
-            for c in range(COLS):
-                if board[r][c] == ".":
+        for r in range(9):
+            for c in range(9):
+                item = board[r][c]
+                if item == ".":
                     continue
-                if board[r][c] in rows[r]:
+                if (item in rows[r] or
+                    item in cols[c] or
+                    item in squares[(r//3, c//3)]):
                     return False
-                if board[r][c] in cols[c]:
-                    return False
-                
-                rows[r].add(board[r][c])
-                cols[c].add(board[r][c])
-
-                idx = 0
-
-                if r < 3:
-                    if c < 3:
-                        idx = 0
-                    elif c < 6:
-                        idx = 3
-                    else:
-                        idx = 6
-                elif r < 6:
-                    if c < 3:
-                        idx = 1
-                    elif c < 6:
-                        idx = 4
-                    else:
-                        idx = 7
-                else:
-                    if c < 3:
-                        idx = 2
-                    elif c < 6:
-                        idx = 5
-                    else:
-                        idx = 8
-
-                if board[r][c] in threes[idx]:
-                    return False
-                threes[idx].add(board[r][c])
-
+                cols[c].add(item)
+                rows[r].add(item)
+                squares[(r//3, c//3)].add(item)
         return True
-
-        
