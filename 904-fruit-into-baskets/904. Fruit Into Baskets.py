@@ -3,7 +3,6 @@ class Solution:
         res = 0
         l = 0
         while l < len(fruits):
-            print(l)
             baskets = set()
             locRes = 0
             newIdx = -1
