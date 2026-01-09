@@ -1,55 +1,25 @@
 class Solution:
     def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
         items.sort()
-        maxAtEachPrice = []
 
-        curMax = 0
-        for i in range(len(items)):
-            if i > 0 and items[i][0] != items[i-1][0]:
+        queries = [(q, i) for i, q in enumerate(queries)]
+        queries.sort()
 
-                maxAtEachPrice.append((items[i-1][0], curMax))
-                curMax = max(curMax, items[i][1])
-            else:
-                curMax = max(curMax, items[i][1])
-        curMax = max(curMax, items[-1][1])
-        maxAtEachPrice.append((items[-1][0], curMax))
-
-        res = []
-
-        for q in queries:
-            maxQuality = 0
-            l, r = 0, len(maxAtEachPrice) - 1
-
-            while l <= r:
-                m = (l+r) // 2
-                if maxAtEachPrice[m][0] > q:
-                    r = m - 1
-                elif maxAtEachPrice[m][0] < q:
-                    l = m + 1
-                    maxQuality = max(maxQuality, maxAtEachPrice[m][1])
-                else:
-                    maxQuality = max(maxQuality, maxAtEachPrice[m][1])
-                    break
-            res.append(maxQuality)
+        l = 0
+        maxB = 0
+        res = [0] * len(queries)
+        for q, i in queries:
+            while l < len(items) and items[l][0] <= q:
+                maxB = max(maxB, items[l][1])
+                l += 1
+            res[i] = maxB
         
         return res
-
-                    
-
-                
-
-
-
-        
-        
-
-        
-                    
+            
+            
 
 
 
 
-                    
-                    
+            
 
-        
