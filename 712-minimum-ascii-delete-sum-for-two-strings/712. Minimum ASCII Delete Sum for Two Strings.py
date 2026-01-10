@@ -6,13 +6,15 @@ class Solution:
 
         for i in range(n):
             for j in range(m):
+
                 if s1[i] == s2[j]:
-                    dp[i+1][j+1] = dp[i][j] + ord(s1[i]) * 2
+                    dp[i+1][j+1] = dp[i][j] + ord(s1[i])
+                    
 
                 else:
                     dp[i+1][j+1] = max(dp[i+1][j], dp[i][j+1])
         total_ascii = sum(ord(c) for c in s1) + sum(ord(c) for c in s2)
-        return total_ascii - dp[n][m]
+        return total_ascii - 2 * dp[n][m]
 
 
         
