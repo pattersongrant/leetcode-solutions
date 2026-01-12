@@ -9,12 +9,11 @@ class Solution:
         res.append(-minHeap[0][0])
         count = 0
         for r in range(k, len(nums)):
-
-            while len(minHeap) > 0 and minHeap[0][1] <= r-k:
-                heapq.heappop(minHeap)
-            
             heapq.heappush(minHeap, (-nums[r], r))
-            
+
+            while minHeap[0][1] <= r-k:
+                heapq.heappop(minHeap)
+
             res.append(-minHeap[0][0])
         
         return res
