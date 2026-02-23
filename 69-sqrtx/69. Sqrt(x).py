@@ -1,16 +1,18 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x == 0: return 0
-        if x == 1: return 1
-        prev = 0
-        for i in range(x+1):
-            squared = i*i
-            if squared == x:
+        l = 0
+        r = x
+        m = 0
+        while l <= r:
+            m = (l+r) // 2
+            squared = m*m
 
-                return i
-            
-            if squared > x and prev*prev < x:
-                return prev
-            
-            prev = i
+            if squared > x:
+                r = m - 1
+            elif squared < x:
+                l = m + 1
+            elif squared == x:
+                return m
         
+        return m if (m*m < x) else (m - 1)
+            
