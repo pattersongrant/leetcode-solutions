@@ -6,5 +6,4 @@ class Solution:
             temp = one
             one = one + two
             two = temp
-
         return one
