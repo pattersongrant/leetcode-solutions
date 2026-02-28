@@ -4,14 +4,15 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
 
+        cur = 0
 
-        l = 0
-        for i in range(len(nums)):
-            if nums[i] != 0:
-                nums[l] = nums[i]
-                l+=1
+        for i, n in enumerate(nums):
+            if n != 0:
+                nums[cur] = n
+                if i != cur:
+                    nums[i] = 0
+                cur += 1
+
+            
         
-        for i in range(len(nums) - 1, -1, -1):
-            if i == l-1:
-                break
-            nums[i] = 0
+        
