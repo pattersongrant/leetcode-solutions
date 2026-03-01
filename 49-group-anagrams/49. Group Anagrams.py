@@ -1,23 +1,17 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anas = defaultdict(list)
+        
+        countsToLists = defaultdict(list)
+
         for s in strs:
-            key = [0] * 26
+            count = [0] * 26
             for c in s:
-                key[ord(c)-ord('a')] += 1
-            
-            anas[tuple(key)].append(s)
-        
-        res = []
-        for key in anas:
-            res.append(anas[key])
-        
-        return res
-        
-
-            
-
+                count[ord(c) - ord('a')] += 1
                 
+            countsToLists[tuple(count)].append(s)
 
+        res = []
+        for ct in countsToLists:
+            res.append(countsToLists[ct])
 
-
+        return res
