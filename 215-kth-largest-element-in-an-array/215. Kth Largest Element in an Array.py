@@ -1,9 +1,20 @@
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        nums = [-n for n in nums]
-        
-        heapq.heapify(nums)
+        buckets = [0] * (abs(min(nums)) + max(nums) + 1)
 
-        for i in range(k-1):
-            heapq.heappop(nums)
-        return -nums[0]
+        offset = abs(min(nums))
+
+        for n in nums:
+            if n < 0:
+                buckets[offset - abs(n)] += 1
+            else:
+                buckets[n + offset] += 1
+        
+        seen = 0
+        for i in range(len(buckets) - 1, -1, -1):
+            seen += buckets[i]
+            if seen >= k:
+                return (i - offset)    
+            
+
+        
