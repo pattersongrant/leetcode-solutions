@@ -1,28 +1,28 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        '''
+        "babad"
+
+        bruteforce: b ba bab baba babad
+                    a ab aba abad
+                    b ba bad
+                    a ad
+                    d
+        '''
+
         res = ""
-        resLen = 0
-    
-        
         for i in range(len(s)):
-            l, r = i, i
-
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if r - l + 1 > resLen:
-                    resLen = r - l + 1
-                    res = s[l:r+1]      
-                l -= 1
-                r += 1
-
-
-            l, r = i, i+1
-
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                if r - l + 1 > resLen:
-                    resLen = r - l + 1
-                    res = s[l:r+1]      
-                l -= 1
-                r += 1
-
-        return res
+            for j in range(i+1, len(s)+1):
+                if s[i:j] == s[i:j][::-1]:
+                    if len(s[i:j]) > len(res):
+                        res = s[i:j]
         
+        return res
+
+
+                
+            
+
+
+
+
