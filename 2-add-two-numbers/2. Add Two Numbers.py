@@ -3,46 +3,39 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        cur = l1
-        
-        first = ""
-        second = ""
-
-        while cur:
-            first += str(cur.val)
-            cur = cur.next
-
-        cur = l2
-
-        while cur:
-            second += str(cur.val)
-            cur = cur.next
-
-        ans = int(first[::-1]) + int(second[::-1]) #add together actual numbers
-        ans = str(ans)[::-1] #back to reverse
 
         cur = ListNode()
         head = cur
-        for i, n in enumerate(ans):            
-            cur.val = int(n)
-            if i != len(ans) - 1:
-                new_node = ListNode()
-                cur.next = new_node
+        carry = 0
+        while l1 or l2:
+            l1val = 0
+            l2val = 0
+            
+            if l1:
+                l1val = l1.val
+                l1 = l1.next
+            if l2:
+                l2val = l2.val
+                l2 = l2.next
+            
+            tot = l1val + l2val + carry
+            if tot > 9:
+                carry = 1
+                tot = tot-10
+            else:
+                carry = 0
+            
+            
+            cur.val = tot
+            if l1 or l2:
+                cur.next = ListNode()
                 cur = cur.next
-        
+        if carry:
+            cur.next = ListNode(carry)
         return head
             
+            
+            
 
-
-        
-        
-        
-
-
-        
-
-        
-        
