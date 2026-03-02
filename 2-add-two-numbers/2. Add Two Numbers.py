@@ -9,7 +9,7 @@ class Solution:
         cur = ListNode()
         head = cur
         carry = 0
-        while l1 or l2:
+        while l1 or l2 or carry:
             l1val = 0
             l2val = 0
             
@@ -29,11 +29,10 @@ class Solution:
             
             
             cur.val = tot
-            if l1 or l2:
+            if l1 or l2 or carry:
                 cur.next = ListNode()
                 cur = cur.next
-        if carry:
-            cur.next = ListNode(carry)
+
         return head
             
             
