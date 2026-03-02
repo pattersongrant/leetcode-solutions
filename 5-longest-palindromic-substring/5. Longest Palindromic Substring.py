@@ -1,23 +1,40 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        '''
-        "babad"
-
-        bruteforce: b ba bab baba babad
-                    a ab aba abad
-                    b ba bad
-                    a ad
-                    d
-        '''
-
-        res = ""
-        for i in range(len(s)):
-            for j in range(i+1, len(s)+1):
-                if s[i:j] == s[i:j][::-1]:
-                    if len(s[i:j]) > len(res):
-                        res = s[i:j]
         
+        res = ""
+        if len(s) >= 1:
+            res = s[0]
+        for i in range(len(s)):
+            l, r = i-1, i+1
+            while l >= 0 and r < len(s):
+                if s[l] == s[r]:
+                    if len(res) < (r+1) - l:
+                        res = s[l:r+1]
+                    l -= 1
+                    r += 1
+                else:
+                    break
+            
+            l, r = i, i+1
+            while l >= 0 and r < len(s):
+                if s[l] == s[r]:
+                    if len(res) < (r+1) - l:
+                        res = s[l:r+1]
+                    l -= 1
+                    r += 1
+                else:
+                    break
+                
+            
+
+
+
+
+
         return res
+            
+
+
 
 
                 
