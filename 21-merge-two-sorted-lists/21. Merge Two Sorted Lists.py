@@ -8,7 +8,6 @@ class Solution:
         cur = ListNode()
         head = cur
         while list1 or list2:
-            print(list1, list2)
             if not list1:
                 cur.next = ListNode(list2.val, None)
                 list2 = list2.next
