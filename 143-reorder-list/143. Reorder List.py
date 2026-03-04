@@ -22,11 +22,10 @@ class Solution:
         while l <= r:
             cur.next = arr[l]
             cur = cur.next
-            cur.next = None
             cur.next = arr[r]
             cur = cur.next
-            cur.next = None
             l += 1
             r -= 1
-        
+        cur.next = None
+
         return newHead.next
