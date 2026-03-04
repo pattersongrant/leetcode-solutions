@@ -67,7 +67,6 @@ class LRUCache:
             self.insert(key, value)
         
         if len(self.cache) > self.cap:
-            print(self.head.next.key)
             self.remove(self.head.next.key)
 
 
