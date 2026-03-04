@@ -35,18 +35,15 @@ class LRUCache:
             self.insert(key, value)
 
     def remove(self, key):
-        if key in self.cache:
-            node = self.cache[key]
-            old_prev = node.prev
-            old_next = node.next
-            if old_prev:
-                old_prev.next = old_next
-            if old_next:
-                old_next.prev = old_prev
-            node.next, node.prev = None, None
-            self.cache.pop(key)
-        else:
-            print("error. enter in cache first")
+        node = self.cache[key]
+        old_prev = node.prev
+        old_next = node.next
+        if old_prev:
+            old_prev.next = old_next
+        if old_next:
+            old_next.prev = old_prev
+        node.next, node.prev = None, None
+        self.cache.pop(key)
 
         #remove from wherever (just take away pointers and remove from cache)
 
