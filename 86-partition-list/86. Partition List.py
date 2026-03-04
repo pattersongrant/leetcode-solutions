@@ -21,18 +21,16 @@ class Solution:
         
         cur = head
         while cur:
-            print(cur.val)
+
             if cur.val < x:
-                new = ListNode(cur.val, None)
-                less.next = new
+                less.next = cur
                 less = less.next
             else:
-                new = ListNode(cur.val, None)
-                gr_eq.next = new
+                gr_eq.next = cur
                 gr_eq = gr_eq.next
 
             cur = cur.next
-        
+        gr_eq.next = None
         less.next = greqHead.next
         return lessHead.next
         
