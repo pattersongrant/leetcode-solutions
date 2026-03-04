@@ -26,6 +26,6 @@ class Solution:
             cur = cur.next
             l += 1
             r -= 1
-        cur.next = None
+        cur.next = None #TERMINATE ONCE AT THE END, BECAUSE OTHERWISE THE LIST CAN LOOP FOREVER.
 
         return newHead.next
