@@ -20,7 +20,6 @@ class Solution:
 
         l, r = 0, len(arr) - 1
         while l <= r:
-            print(l, r)
             cur.next = arr[l]
             cur = cur.next
             cur.next = None
