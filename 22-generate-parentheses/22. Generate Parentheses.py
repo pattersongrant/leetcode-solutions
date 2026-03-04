@@ -1,30 +1,14 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        res = []
-
-
-        maxChar = n * 2
-
-        def dfs(cur, openp, closedp):
-            if openp == closedp == n:
-                res.append(cur)
+        self.res = []
+        def generate(cur, openCount, closedCount):
+            if openCount + closedCount == 2*n:
+                self.res.append(cur)
                 return
-
-            if openp < n:    
-                dfs(cur + "(", openp + 1, closedp)
-
-            if closedp < openp:
-                dfs(cur + ")", openp, closedp + 1)
-
-        dfs("", 0, 0)
-
-        return res
             
-
-            
-
-
-
-
-
-        
+            if openCount > closedCount:
+                generate(cur + ")", openCount, closedCount + 1)
+            if closedCount <= openCount and openCount != n:
+                generate(cur + "(", openCount + 1, closedCount)
+        generate("", 0, 0)
+        return self.res
