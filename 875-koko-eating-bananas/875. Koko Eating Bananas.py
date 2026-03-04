@@ -13,10 +13,7 @@ class Solution:
                 if m >= n:
                     hoursUsed += 1
                 else:
-                    if int(n/m) == n/m:
-                        hoursUsed += n/m
-                    else:
-                        hoursUsed += int((n / m) + 1)
+                    hoursUsed += math.ceil(n/m)
                 # print(m, n, hoursUsed - old)
             
             if hoursUsed <= h:
@@ -28,4 +25,3 @@ class Solution:
 
         
         return res
-            
