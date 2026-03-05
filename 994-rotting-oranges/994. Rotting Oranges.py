@@ -1,35 +1,52 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
-        time, fresh = 0, 0
-        q = deque()
+        self.seen = set()
+        time = -1
+
+        closestDistanceToRotten = [[100] * COLS for r in range(ROWS)]
+
+        def dfs(r, c, distance):
+            print(r,c)
+            if (r,c) in self.seen:
+                return
+            self.seen.add((r,c))
+            if grid[r][c] == 1:
+                closestDistanceToRotten[r][c] = min(distance, closestDistanceToRotten[r][c])
+
+            if r+1 < ROWS and grid[r+1][c] == 1:
+                dfs(r+1, c, distance + 1)
+            if r-1 >= 0 and grid[r-1][c] == 1:
+                dfs(r-1, c, distance + 1)
+            if c+1 < COLS and grid[r][c+1] == 1:
+                dfs(r, c+1, distance + 1)
+            if c-1 >= 0 and grid[r][c-1] == 1:
+                dfs(r, c-1, distance + 1)
+            
+            self.seen.remove((r,c))
+
+
+            
+            
 
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == 2:
-                    q.append((r,c))
+                    self.seen = set()
+                    dfs(r, c, 0)
+        
+        res = 0
+        print(closestDistanceToRotten)
+        for r in range(ROWS):
+            for c in range(COLS):
                 if grid[r][c] == 1:
-                    fresh += 1
+                    if closestDistanceToRotten[r][c] == 100:
+                        return -1
+                    res = max(res, closestDistanceToRotten[r][c])
+        
 
-
-        directions = [[0,1], [0,-1], [1,0], [-1,0]]
-        while q and fresh > 0:
-            for i in range(len(q)):
-                r, c = q.popleft()
+        return res
                 
-                for dr, dc in directions:
-                    row, col= r + dr, c+ dc
-                    if (row < 0 or row >= ROWS or col < 0 or col >= COLS or grid[row][col] != 1):
-                        continue
-                    grid[row][col] = 2
-                    fresh -= 1
-                    q.append((row,col)) 
-            time += 1
-            
-        if fresh != 0:
-            return -1
-        return time
-    
-            
 
+        
 
