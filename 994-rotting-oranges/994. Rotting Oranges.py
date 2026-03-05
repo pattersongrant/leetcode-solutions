@@ -23,7 +23,6 @@ class Solution:
         
         while q:
             time += 1
-            print(q)
             for i in range(len(q)):
                 r, c = q.popleft()
                 addQueue(r+1,c)
