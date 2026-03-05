@@ -1,44 +1,42 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         ROWS, COLS = len(grid), len(grid[0])
-        self.seen = set()
+        seen = set()
         time = -1
 
-        closestDistanceToRotten = [[100] * COLS for r in range(ROWS)]
+        q = deque()
+        def addQueue(r, c):
 
-        def dfs(r, c, distance):
-            if (r,c) in self.seen:
+            if (not (0 <= r < ROWS and 0 <= c < COLS)) or grid[r][c] == 2 or grid[r][c] != 1:
                 return
-            self.seen.add((r,c))
-            if grid[r][c] == 1:
-                closestDistanceToRotten[r][c] = min(distance, closestDistanceToRotten[r][c])
-
-            if r+1 < ROWS and grid[r+1][c] == 1:
-                dfs(r+1, c, distance + 1)
-            if r-1 >= 0 and grid[r-1][c] == 1:
-                dfs(r-1, c, distance + 1)
-            if c+1 < COLS and grid[r][c+1] == 1:
-                dfs(r, c+1, distance + 1)
-            if c-1 >= 0 and grid[r][c-1] == 1:
-                dfs(r, c-1, distance + 1)
-            
-            self.seen.remove((r,c))
-
-        for r in range(ROWS):
-            for c in range(COLS):
-                if grid[r][c] == 2:
-                    dfs(r, c, 0)
-        
-        res = 0
+            grid[r][c] = 2
+            q.append((r,c))
+        found = False
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == 1:
-                    if closestDistanceToRotten[r][c] == 100:
-                        return -1
-                    res = max(res, closestDistanceToRotten[r][c])
+                    found = True
+                if grid[r][c] == 2:
+                    q.append((r,c))
+        if not found:
+            return 0
         
+        while q:
+            time += 1
+            print(q)
+            for i in range(len(q)):
+                r, c = q.popleft()
+                addQueue(r+1,c)
+                addQueue(r-1,c)
+                addQueue(r,c+1)
+                addQueue(r,c-1)
+        
+        for r in range(ROWS):
+            for c in range(COLS):
+                if grid[r][c] == 1:
+                    return -1
 
-        return res
+        return time
                 
 
         
