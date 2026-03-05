@@ -27,7 +27,6 @@ class Solution:
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == 2:
-                    self.seen = set()
                     dfs(r, c, 0)
         
         res = 0
