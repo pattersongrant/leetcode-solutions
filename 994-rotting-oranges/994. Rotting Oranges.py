@@ -7,7 +7,6 @@ class Solution:
         closestDistanceToRotten = [[100] * COLS for r in range(ROWS)]
 
         def dfs(r, c, distance):
-            print(r,c)
             if (r,c) in self.seen:
                 return
             self.seen.add((r,c))
@@ -25,10 +24,6 @@ class Solution:
             
             self.seen.remove((r,c))
 
-
-            
-            
-
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == 2:
@@ -36,7 +31,6 @@ class Solution:
                     dfs(r, c, 0)
         
         res = 0
-        print(closestDistanceToRotten)
         for r in range(ROWS):
             for c in range(COLS):
                 if grid[r][c] == 1:
