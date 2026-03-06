@@ -7,31 +7,14 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        
+        if not root or root == p or root == q:
+            return root
 
-        self.LCA = None
-        def dfs(node): #returns whether the subtree starting at node includes [p, q]
-            pFound = False
-            qFound = False
-            
-            leftCheck = [False, False]
-            rightCheck = [False, False]
-            if node.left:
-                leftCheck = dfs(node.left)
-            if node.right:
-                rightCheck = dfs(node.right)
-            
-            if node == p or leftCheck[0] or rightCheck[0]:
-                pFound = True
-            if node == q or leftCheck[1] or rightCheck[1]:
-                qFound = True
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
 
-            if (node == p or node == q or leftCheck[0] or leftCheck[1]) and (node == q or node == p or rightCheck[0] or rightCheck[1]):
-                self.LCA = node
+        if left and right:
+            return root
 
-            return [pFound, qFound]
-
-        dfs(root)
-        return self.LCA
-
+        return left or right
             
