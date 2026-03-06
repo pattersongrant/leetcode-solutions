@@ -20,7 +20,6 @@ class Solution:
                 leftCheck = dfs(node.left)
             if node.right:
                 rightCheck = dfs(node.right)
-            print(leftCheck, rightCheck)
             
             if node == p or leftCheck[0] or rightCheck[0]:
                 pFound = True
