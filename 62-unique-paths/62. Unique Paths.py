@@ -11,8 +11,7 @@ class Solution:
         '''
         dp = [[-1] * n for i in range(m)]
         dp[0][0] = 1
-        # dp[1][0] = 1
-        # dp[0][1] = 1
+        
         def dfs(r, c):
             if r < 0 or c < 0:
                 return 0
