@@ -5,33 +5,34 @@
 #         self.next = next
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        def mergeTwoLists(cur1, cur2):
-            head = ListNode()
-            cur = head
-            while cur1 or cur2:
-                if not cur1:
-                    cur.next = cur2
-                    cur2 = cur2.next
-                elif not cur2:
-                    cur.next = cur1
-                    cur1 = cur1.next
-                elif cur1.val < cur2.val:
-                    cur.next = cur1
-                    cur1 = cur1.next
-                else:
-                    cur.next = cur2
-                    cur2 = cur2.next
-                cur = cur.next
-            cur.next = None
-            return head.next
-        if not lists:
-            return None
-        
-        list1Head = lists[0]
+        '''
+        nlogn method:
+        make an array of all the values and node pairs [(node.val, node)] O(n)
+        sort the array O(n log n)
 
-        for i in range(1, len(lists)):
-            list1Head = mergeTwoLists(list1Head, lists[i])
+        reconstruct linked list O(n)
+
+        full method = O (n log n) -> better than current n^2 method
+        '''
+        values = []
+
+        for i in range(len(lists)):
+            cur = lists[i]
+            while cur:
+                values.append([cur.val, cur])
+                cur = cur.next
+
+        values.sort(key=lambda x: x[0])
+        head = ListNode()
+        cur = head
+        for pair in values:
+            head.next = pair[1]
+            head = head.next
+        head.next = None
+        return cur.next
+
+                
+            
         
-        return list1Head
 
                     
