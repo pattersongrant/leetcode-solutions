@@ -18,7 +18,6 @@ class Solution:
         [1][n] -> [n][n-1]
         '''
 
-
         n = len(matrix)
         seen = set()
         for r in range(math.ceil(n)):
@@ -29,15 +28,11 @@ class Solution:
                     continue
                 needToMove = matrix[r][c]
                 for _ in range(4):
-
-                    # for row in range(n):
-                        # print(matrix[row])
                     seen.add((nxt[0], nxt[1]))
                     oldValAtNxt = matrix[nxt[0]][nxt[1]]
                     matrix[nxt[0]][nxt[1]] = needToMove
                     needToMove = oldValAtNxt
                     nxt = [nxt[1], n-1-nxt[0]]
-                # print(" ")
         
                 
 
