@@ -3,19 +3,17 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
-
-
+        
         '''
         store just the value of the square you are jumping to.
         Repeat for each of the 4 sides until the (r,c) is the first one you were at
         
         first
         [0][1] -> [1][n]
-
-        [r][c] -> [c][n-r]
-
         second
         [1][n] -> [n][n-1]
+        ...
+        [r][c] -> [c][n-r]
         '''
 
         n = len(matrix)
