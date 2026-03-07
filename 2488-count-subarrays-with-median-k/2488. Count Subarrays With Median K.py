@@ -13,7 +13,6 @@ class Solution:
             elif nums[i] < k:
                 s1 += 1
             counts[(l1-s1)] += 1
-            # counts[(s1-l1)] += 1
 
             if l1-s1==0 or l1-s1==1: res += 1
         
