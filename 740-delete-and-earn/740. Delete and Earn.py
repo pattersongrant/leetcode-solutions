@@ -4,14 +4,7 @@ class Solution:
             maxNum = max(nums)
             for n in nums:
                 counts[n] += n
-            for i in range(maxNum+1):
-                minusOne = 0
-                if i - 1 in counts:
-                    minusOne = counts[i-1]
-                minusTwo = 0
-                if i - 2 in counts:
-                    minusTwo = counts[i-2]
-
-                counts[i] = max(minusOne, counts[i] + minusTwo)
+            for i in range(2,maxNum+1):
+                counts[i] = max(counts[i-1], counts[i] + counts[i-2])
         
             return counts[maxNum]
