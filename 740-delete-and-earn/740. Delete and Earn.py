@@ -1,9 +1,8 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
             counts = defaultdict(int)
-            maxNum = 0
+            maxNum = max(nums)
             for n in nums:
-                maxNum = max(maxNum, n)
                 counts[n] += n
             for i in range(maxNum+1):
                 minusOne = 0
