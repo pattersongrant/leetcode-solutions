@@ -10,8 +10,7 @@ class Solution:
                 minusTwo = 0
                 if i - 2 in counts:
                     minusTwo = counts[i-2]
-                
+
                 counts[i] = max(minusOne, counts[i] + minusTwo)
-                print(counts[i])
         
             return counts[max(nums)]
