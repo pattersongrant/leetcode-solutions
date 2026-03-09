@@ -6,8 +6,6 @@ class Solution:
         '''
         dp = [([-1] * (r+1)) for r in range(query_row+1)]
         dp[0][0] = poured
-        seen = set()
-        seen.add((0,0))
         def dfs(row, idx):
             amount = 0
             if row < 0 or row >= len(dp) or idx < 0 or idx >= (len(dp[row])):
