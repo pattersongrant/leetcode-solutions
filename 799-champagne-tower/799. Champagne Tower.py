@@ -4,17 +4,17 @@ class Solution:
         take from up and left and up and right. You get half the excess there
         if not up and left or not up and right, you get 0 from there.
         '''
-        dp = [([0.0] * (query_row+1)) for r in range(query_row+1)]
+        dp = [([-1] * (r+1)) for r in range(query_row+1)]
         dp[0][0] = poured
         seen = set()
         seen.add((0,0))
         def dfs(row, idx):
             amount = 0
-            if row < 0 or row >= len(dp) or idx < 0 or idx >= (query_row + 1):
+            if row < 0 or row >= len(dp) or idx < 0 or idx >= (len(dp[row])):
                 return 0
-            if (row, idx) in seen:
+            if dp[row][idx] != -1:
                 return dp[row][idx]
-            seen.add((row, idx))
+            dp[row][idx] = 0
             
             above1 = dfs(row-1, idx)
             above2 = dfs(row-1, idx-1)
