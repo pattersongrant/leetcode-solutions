@@ -11,10 +11,12 @@ class Solution:
 
         cur = head
                 
-        while True:
-            kth = self.getKth(groupPrev, k)
-            if not kth:
-                break
+        kth = groupPrev
+        for i in range(k):
+            if kth:
+                kth = kth.next
+        while kth:
+
             groupNext = kth.next
 
             prev = groupNext
@@ -27,12 +29,17 @@ class Solution:
             tmp = groupPrev.next
             groupPrev.next = kth
             groupPrev = tmp
+
+            kth = groupPrev
+            for i in range(k):
+                if kth:
+                    kth = kth.next
         return dummy.next
 
-    def getKth(self, groupPrev, k):
-        cur = groupPrev
-        for i in range(k):
-            if cur:
-                cur = cur.next
-        return cur
+    # def getKth(self, groupPrev, k):
+    #     cur = groupPrev
+    #     for i in range(k):
+    #         if cur:
+    #             cur = cur.next
+    #     return cur
         
