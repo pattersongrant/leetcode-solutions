@@ -8,15 +8,14 @@ class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         dummy = ListNode(0, head)
         groupPrev = dummy
-
         cur = head
-                
         kth = groupPrev
+        
         for i in range(k):
             if kth:
                 kth = kth.next
-        while kth:
 
+        while kth:
             groupNext = kth.next
 
             prev = groupNext
@@ -35,11 +34,4 @@ class Solution:
                 if kth:
                     kth = kth.next
         return dummy.next
-
-    # def getKth(self, groupPrev, k):
-    #     cur = groupPrev
-    #     for i in range(k):
-    #         if cur:
-    #             cur = cur.next
-    #     return cur
         
