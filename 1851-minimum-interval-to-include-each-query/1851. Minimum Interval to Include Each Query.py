@@ -25,10 +25,8 @@ class Solution:
             # pop minHeaps that end too early
             while minHeap and minHeap[0][1] < query:
                 heapq.heappop(minHeap)
-            if minHeap:
-                resMap[query] = minHeap[0][0]
-            else:
-                resMap[query] = -1
+            resMap[query] = minHeap[0][0] if minHeap else -1
+
         
         res = []
         for q in queries:
