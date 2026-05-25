@@ -15,7 +15,6 @@ class Solution:
         add all the intervals until the start index > query
 
         when adding to minHeap, pop until there is an interval where the right[i] is less       than query
-
         '''
         for query in queries:
             # add all valid start idx intervals
