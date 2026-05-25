@@ -14,6 +14,8 @@ class Solution:
         when adding to minHeap, pop until there is an interval where the right[i] is less than query
         '''
         for query in sorted(queries):
+            if query in resMap:
+                continue
             # add all valid start idx intervals
             while curInt != len(intervals) and intervals[curInt][0] <= query:
                 i = intervals[curInt]
