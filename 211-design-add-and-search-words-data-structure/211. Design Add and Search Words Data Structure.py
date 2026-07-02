@@ -12,8 +12,9 @@ class WordDictionary:
 
     def __init__(self):
         self.root = TrieNode()
-
+        self.quick = set()
     def addWord(self, word: str) -> None:
+        self.quick.add(word)
         cur = self.root
         for c in word:
             if c not in cur.children:
@@ -23,7 +24,8 @@ class WordDictionary:
 
 
     def search(self, word: str) -> bool:
-        
+        if word in self.quick:
+            return True
         def searchFromHere(start, remaining):
             cur = start
             for i, c in enumerate(remaining):
