@@ -25,11 +25,11 @@ class WordDictionary:
         def searchFromHere(start, remaining):
             cur = start
             for i, c in enumerate(remaining):
+                if c == ".":
+                    for next_c in cur.children:
+                        if searchFromHere(cur.children[next_c], remaining[i+1::]):
+                            return True
                 if c not in cur.children:
-                    if c == ".":
-                        for next_c in cur.children:
-                            if searchFromHere(cur.children[next_c], remaining[i+1::]):
-                                return True
                     return False
                 cur = cur.children[c]
             return cur.endOfWord
