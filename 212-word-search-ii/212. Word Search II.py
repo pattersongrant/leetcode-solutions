@@ -16,16 +16,14 @@ class Solution:
         self.root = TrieNode()
         def insert(word):
             cur = self.root
-
             for c in word:
                 if c not in cur.children:
                     cur.children[c] = TrieNode()
                 cur = cur.children[c]
             cur.endOfWord = True
-        
+            
         for w in words:
             insert(w)
-
 
         def remove(word):
             cur = self.root
@@ -40,11 +38,6 @@ class Solution:
                     if len(prevNodes[i].children) >= 1:
                         return
                     prevNodes[i-1].children.pop(word[i])
-
-            
-                
-
-
 
         ROWS, COLS = len(board), len(board[0])
         self.res = []
