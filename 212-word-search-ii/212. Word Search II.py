@@ -30,19 +30,16 @@ class Solution:
         def remove(word):
             cur = self.root
             prevNodes = []
-            print(word)
             for c in word:
                 cur = cur.children[c]
                 prevNodes.append(cur)
             if cur.children: #if there is a word that encapsulates this whole word
                 cur.endOfWord = False
-                print("extensions, exited!")
             else:
                 for i in range(len(prevNodes) -1, 0, -1):
                     if len(prevNodes[i].children) >= 1:
                         return
                     prevNodes[i-1].children.pop(word[i])
-                    print("removed " + word[i])
 
             
                 
