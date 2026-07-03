@@ -35,6 +35,7 @@ class Solution:
             if curNode.endOfWord and not curNode.added:
                 self.res.append(curString + board[r][c])
                 curNode.added = True
+                    
             if r+1 in range(ROWS) and c in range(COLS) and board[r+1][c] in curNode.children:
                 findWordsFromHere(r+1, c, curString + board[r][c], seen, curNode.children[board[r+1][c]])
             if r-1 in range(ROWS) and c in range(COLS) and board[r-1][c] in curNode.children:
