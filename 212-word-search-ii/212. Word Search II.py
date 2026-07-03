@@ -36,13 +36,13 @@ class Solution:
                 self.res.append(curString + board[r][c])
                 curNode.added = True
                     
-            if r+1 in range(ROWS) and c in range(COLS) and board[r+1][c] in curNode.children:
+            if r+1 < ROWS and board[r+1][c] in curNode.children:
                 findWordsFromHere(r+1, c, curString + board[r][c], seen, curNode.children[board[r+1][c]])
-            if r-1 in range(ROWS) and c in range(COLS) and board[r-1][c] in curNode.children:
+            if r-1 >= 0 and board[r-1][c] in curNode.children:
                 findWordsFromHere(r-1, c, curString + board[r][c], seen, curNode.children[board[r-1][c]])
-            if r in range(ROWS) and c+1 in range(COLS) and board[r][c+1] in curNode.children:
+            if c+1 < COLS and board[r][c+1] in curNode.children:
                 findWordsFromHere(r, c+1, curString + board[r][c], seen, curNode.children[board[r][c+1]])
-            if r in range(ROWS) and c-1 in range(COLS) and board[r][c-1] in curNode.children:
+            if c-1 >= 0 and board[r][c-1] in curNode.children:
                 findWordsFromHere(r, c-1, curString + board[r][c], seen, curNode.children[board[r][c-1]])
             seen.remove((r,c))
 
