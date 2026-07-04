@@ -1,34 +1,45 @@
 class Solution:
     def multiply(self, num1: str, num2: str) -> str:
+
         if num1 == "0" or num2 == "0": return "0"
+        res = [0] * (len(num1) + len(num2))
+        for i in range(len(num1) -1, -1, -1):
+            shift = len(num1) - i - 1
+            for j in range(len(num2) -1, -1, -1):
+                shift_2 = len(num2) - j - 1
+                
+                tot = shift + shift_2
+                digits_m = int(num1[i]) * int(num2[j])
 
-        def turnIntoInt(string):
-            integer = 0
-            for i in range(len(string)):
-                place = (10**(len(string)-i-1)) if i != len(string)-1 else 1
-                if string[i] == "0":
-                    continue
-                if string[i] == "1":
-                    integer += 1 * place
-                if string[i] == "2":
-                    integer += 2 * place
-                if string[i] == "3":
-                    integer += 3 * place
-                if string[i] == "4":
-                    integer += 4 * place
-                if string[i] == "5":
-                    integer += 5 * place
-                if string[i] == "6":
-                    integer += 6 * place
-                if string[i] == "7":
-                    integer += 7 * place
-                if string[i] == "8":
-                    integer += 8 * place
-                if string[i] == "9":
-                    integer += 9 * place
-            return integer
-        return str(turnIntoInt(num1) * turnIntoInt(num2))
+                digit_cur = digits_m % 10
+                carry = digits_m // 10
+                res[tot] += digit_cur
+                res[tot + 1] += carry
+                res[tot + 1] += res[tot] // 10
+                res[tot] = res[tot] % 10
 
 
 
+
+        for i in range(len(res)):
+            res[i] = str(res[i])
         
+        for i in range(len(res)-1,-1,-1):
+            if res[i] == "0":
+                res.pop(i)
+            else:
+                break
+
+            
+    
+
+        return "".join(reversed(res))
+
+
+
+
+
+
+
+
+
