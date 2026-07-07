@@ -1,5 +1,7 @@
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        """1. MAKE ADJ LIST USING PATTERNS, 2. USE BFS"""
+        
         if endWord not in wordList: return 0
         patterns = defaultdict(list)
         wordList.append(beginWord)
