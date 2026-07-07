@@ -14,8 +14,8 @@ class Solution:
 
         while q:
             level = []
-
-            for i in range(len(q)):
+            curLen = len(q)
+            for i in range(curLen):
                 node = q.popleft()
                 if node:
                     level.append(node.val)
