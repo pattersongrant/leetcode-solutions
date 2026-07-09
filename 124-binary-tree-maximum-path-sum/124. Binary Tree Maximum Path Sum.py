@@ -18,10 +18,7 @@ class Solution:
 
         self.res = root.val
         def travel(node):
-            print(node.val)
             val, leftsum, rightsum = node.val, -float('inf'), -float('inf')
-            if not node.left and not node.right:
-                return val
             if node.left:
                 leftsum = travel(node.left)
             if node.right:
