@@ -24,7 +24,7 @@ class Solution:
             if node.right:
                 rightsum = travel(node.right)
             self.res = max(leftsum, rightsum, rightsum + val, leftsum + val, leftsum + rightsum + val, val, self.res)
-            return val + max(leftsum, rightsum, 0)
+            return max(leftsum + val, rightsum + val, val)
         travel(root)
         return self.res
 
