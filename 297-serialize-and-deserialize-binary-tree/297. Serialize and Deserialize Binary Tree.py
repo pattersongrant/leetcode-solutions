@@ -13,14 +13,13 @@ class Codec:
         q.append(root)
         res = []
         while q:
-            for _ in range(len(q)):
-                node = q.popleft()
-                if node:
-                    res.append(str(node.val))
-                    q.append(node.left)
-                    q.append(node.right)
-                else:
-                    res.append("N")
+            node = q.popleft()
+            if node:
+                res.append(str(node.val))
+                q.append(node.left)
+                q.append(node.right)
+            else:
+                res.append("N")
         while res and res[-1] == "N":
             res.pop()
         return ",".join(res)
