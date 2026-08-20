@@ -8,7 +8,7 @@ class Solution:
             for j in range(len(s2), -1, -1):
                 if i < len(s1) and s1[i] == s3[i+j] and dp[i+1][j] == True:
                     dp[i][j] = True
-                if j < len(s2) and s2[j] == s3[i+j] and dp[i][j+1] == True:
+                elif j < len(s2) and s2[j] == s3[i+j] and dp[i][j+1] == True:
                     dp[i][j] = True
         return dp[0][0]
 
