@@ -4,6 +4,8 @@ class Solution:
         dp = {}
 
         def dfs(l, r):
+            if l > r:
+                return 0
 
             if (l,r) in dp:
                 return dp[(l,r)]
