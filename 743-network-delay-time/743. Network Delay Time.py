@@ -1,21 +1,5 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
-        '''
-        network of directed nodes (times)
-        each edge has a weight (travel time), >= 0
-        k = first node sending a signal from
-
-        return either the minimum time to reach all nodes
-        OR -1 if impossible
-
-        My solution: use Prim's, as we're starting from a specific node and trying to build an MST.
-        
-        idea: build a map of neighbors
-
-        start w/ k, adding it and it's neighbors to a min heap sorted by weight.
-        then keep going, adding the lowest edge (if unseen so far)  and the neighbors connected to the newly connected node 
-        '''
-
         minHeap = []
         neighbors = defaultdict(list) #node : list of (neighbor, edge)
         for u,v,w in times:
