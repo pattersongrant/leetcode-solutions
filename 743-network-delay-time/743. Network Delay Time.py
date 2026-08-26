@@ -25,8 +25,9 @@ class Solution:
         for neighbor, edge in neighbors[k]:
             heapq.heappush(minHeap, (edge, neighbor, k))
 
-        toGetTo = {}
-        toGetTo[k] = 0
+
+        seen = set()
+        seen.add(k)
 
 
         
@@ -34,19 +35,19 @@ class Solution:
         while minHeap:
             edge, neighbor, cameFrom = heapq.heappop(minHeap)
             #if already visited w/ a smaller weight, skip it
-            if neighbor in toGetTo:
+            if neighbor in seen:
                 continue
 
             
             #we've seen this new node now
-            toGetTo[neighbor] = edge
-            res = max(toGetTo[neighbor], res)
+            seen.add(neighbor)
+            res = max(edge, res)
 
             #add all edges of newly added node
             for n1, e in neighbors[neighbor]:
-                heapq.heappush(minHeap, (toGetTo[neighbor] + e, n1, neighbor))
+                heapq.heappush(minHeap, (edge + e, n1, neighbor))
 
-        if not len(toGetTo) == n:
+        if not len(seen) == n:
             return -1
 
         return res
