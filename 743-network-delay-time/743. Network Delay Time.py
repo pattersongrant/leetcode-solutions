@@ -22,12 +22,11 @@ class Solution:
             node, target, time = t[0], t[1], t[2]
             neighbors[node].append((target, time))
         
-        for neighbor, edge in neighbors[k]:
-            heapq.heappush(minHeap, (edge, neighbor))
+
+        minHeap = [(0, k)]
 
 
         seen = set()
-        seen.add(k)
 
 
         
