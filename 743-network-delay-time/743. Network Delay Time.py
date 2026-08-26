@@ -23,7 +23,7 @@ class Solution:
             neighbors[node].append((target, time))
         
         for neighbor, edge in neighbors[k]:
-            heapq.heappush(minHeap, (edge, neighbor, k))
+            heapq.heappush(minHeap, (edge, neighbor))
 
 
         seen = set()
@@ -33,7 +33,7 @@ class Solution:
         
         res = 0
         while minHeap:
-            edge, neighbor, cameFrom = heapq.heappop(minHeap)
+            edge, neighbor = heapq.heappop(minHeap)
             #if already visited w/ a smaller weight, skip it
             if neighbor in seen:
                 continue
@@ -45,12 +45,9 @@ class Solution:
 
             #add all edges of newly added node
             for n1, e in neighbors[neighbor]:
-                heapq.heappush(minHeap, (edge + e, n1, neighbor))
+                heapq.heappush(minHeap, (edge + e, n1))
 
-        if not len(seen) == n:
-            return -1
-
-        return res
+        return res if len(seen) == n else -1
 
 
 
