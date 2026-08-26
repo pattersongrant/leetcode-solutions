@@ -1,5 +1,6 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        #Dijkstra's
         minHeap = []
         neighbors = defaultdict(list) #node : list of (neighbor, edge)
         for u,v,w in times:
