@@ -19,17 +19,10 @@ class Solution:
         minHeap = []
         neighbors = defaultdict(list) #node : list of (neighbor, edge)
         for t in times:
-            node, target, time = t[0], t[1], t[2]
-            neighbors[node].append((target, time))
-        
-
+            neighbors[t[0]].append((t[1], t[2]))
+    
         minHeap = [(0, k)]
-
-
         seen = set()
-
-
-        
         res = 0
         while minHeap:
             edge, neighbor = heapq.heappop(minHeap)
