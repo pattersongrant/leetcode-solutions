@@ -18,8 +18,8 @@ class Solution:
 
         minHeap = []
         neighbors = defaultdict(list) #node : list of (neighbor, edge)
-        for t in times:
-            neighbors[t[0]].append((t[1], t[2]))
+        for u,v,w in times:
+            neighbors[u].append((v,w))
     
         minHeap = [(0, k)]
         seen = set()
