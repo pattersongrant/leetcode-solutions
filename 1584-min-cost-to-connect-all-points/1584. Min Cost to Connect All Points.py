@@ -11,6 +11,8 @@ class Solution:
         seen = set()
         res = 0
         while minHeap:
+            if len(seen) == len(points):
+                return res
             newWeight, newPoint = heapq.heappop(minHeap)
             if newPoint in seen:
                 continue
