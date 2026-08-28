@@ -15,7 +15,6 @@ class Solution:
         for fr,to,price in flights:
             adj[fr].append((to, price))
 
-        res = -1
         minH = [(0,src,0)] #(totalWeightFromSrc, loc, stopCount)
         seen = {} # loc : minStopCountSoFar
         while minH:
@@ -31,5 +30,5 @@ class Solution:
                 if stopCount + 1 <= k+1:
                     heapq.heappush(minH, (weight + price, nei, stopCount + 1))
 
-        return res
+        return -1
 
