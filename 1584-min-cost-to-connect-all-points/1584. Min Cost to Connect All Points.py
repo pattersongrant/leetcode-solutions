@@ -18,7 +18,8 @@ class Solution:
             res += newWeight
 
             for i in range(len(points)):
-                heapq.heappush(minHeap, (weights[newPoint][i], i))
+                if i not in seen:
+                    heapq.heappush(minHeap, (weights[newPoint][i], i))
         
         return res
                 
