@@ -10,9 +10,7 @@ class Solution:
         minHeap = [(0,0)]
         seen = set()
         res = 0
-        while minHeap:
-            if len(seen) == len(points):
-                return res
+        while len(seen) != len(points):
             newWeight, newPoint = heapq.heappop(minHeap)
             if newPoint in seen:
                 continue
