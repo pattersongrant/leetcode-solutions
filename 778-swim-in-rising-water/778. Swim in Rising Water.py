@@ -1,13 +1,5 @@
 class Solution:
     def swimInWater(self, grid: List[List[int]]) -> int:
-        '''
-        start at 0,0 - how long to get to bottom right ?
-        you can swim horizontally or vertically, if grid[r][c] <= t
-
-        use dijkstra's where elevation is the weight
-
-        in minHeap: (maxToGetHere, r, c)
-        '''
         ROWS, COLS = len(grid), len(grid[0])
 
 
@@ -30,4 +22,3 @@ class Solution:
                 if newR < 0 or newR == ROWS or newC < 0 or newC == COLS or (newR, newC) in visit:
                     continue
                 heapq.heappush(minH, (max(maxToGetHere, grid[newR][newC]), newR, newC))
-        return visit[(r,c)]
