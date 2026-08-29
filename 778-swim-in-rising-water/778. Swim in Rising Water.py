@@ -11,7 +11,7 @@ class Solution:
             if (r,c) in visit:
                 continue
             visit.add((r,c))
-            if (r,c) == (ROWS-1, COLS-1):
+            if r == ROWS-1 and c == COLS -1:
                 return maxToGetHere
 
             for newR, newC in directions:
