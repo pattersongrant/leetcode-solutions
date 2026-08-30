@@ -1,16 +1,18 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         prefixes = defaultdict(int)
-
+        
+        res = ""
         for s in strs:
             cur = ""
             for c in s:
                 cur += c
                 prefixes[cur] += 1
-        res = ""
-        for pre in prefixes:
-            if prefixes[pre] == len(strs):
-                res = pre
+
+                if prefixes[cur] == len(strs):
+                    res = cur
+
+        
         return res
 
 
