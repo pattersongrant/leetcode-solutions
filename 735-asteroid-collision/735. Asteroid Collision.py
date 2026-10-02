@@ -1,28 +1,33 @@
+'''
+[-1,5,-2]
+
+
+'''
+
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
-        rightStack = []
-        res = []
-        for n in asteroids:
-            if n > 0: 
-                rightStack.append(n)
-            else:
-                negExploded = False
-                while rightStack and rightStack[-1] <= abs(n):
-                    if rightStack[-1] == abs(n):
-                        rightStack.pop()
-                        negExploded = True
-                        break
-                    else: 
-                        rightStack.pop()
-                if not rightStack and not negExploded:
-                    res.append(n)
-        res.extend(rightStack)
-        return res
+        stack = [asteroids[0]]
+        for i in range(1,len(asteroids)):
+            if not stack:
+                stack.append(asteroids[i])
+                continue
+            inc = asteroids[i]
+            top = stack[-1]
 
-                
-
-
-
-
-
-        
+            if top < 0:
+                stack.append(inc)
+            elif top > 0:
+                if inc < 0:
+                    if abs(inc) > top:
+                        while top > 0 and abs(inc) > top:
+                            stack.pop()
+                            if not stack:
+                                break
+                            top = stack[-1]
+                        if abs(inc) > top:
+                            stack.append(inc)
+                    if abs(inc) == top:
+                        stack.pop()
+                else:
+                    stack.append(inc)
+        return stack
