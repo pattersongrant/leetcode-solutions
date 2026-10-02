@@ -1,9 +1,3 @@
-'''
-[-1,5,-2]
-
-
-'''
-
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = [asteroids[0]]
