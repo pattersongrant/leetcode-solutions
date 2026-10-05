@@ -1,9 +1,7 @@
 class StockSpanner:
 
     def __init__(self):
-        self.seen = []
         self.results = []
-        [100, 80, 60, 70, 60, 75]
 
 
         
@@ -11,11 +9,10 @@ class StockSpanner:
     def next(self, price: int) -> int:
         res = 1
         i = -1
-        while abs(i) <= len(self.seen) and self.seen[i] <= price:
-            res += self.results[i]
-            i -= self.results[i]
-        self.seen.append(price)
-        self.results.append(res)
+        while abs(i) <= len(self.results) and self.results[i][0] <= price:
+            res += self.results[i][1]
+            i -= self.results[i][1]
+        self.results.append([price, res])
         return res
         
 
