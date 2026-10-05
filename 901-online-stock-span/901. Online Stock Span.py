@@ -8,10 +8,9 @@ class StockSpanner:
 
     def next(self, price: int) -> int:
         res = 1
-        i = -1
-        while abs(i) <= len(self.results) and self.results[i][0] <= price:
-            res += self.results[i][1]
-            i -= self.results[i][1]
+        while self.results and self.results[-1][0] <= price:
+            res += self.results[-1][1]
+            self.results.pop()
         self.results.append([price, res])
         return res
         
