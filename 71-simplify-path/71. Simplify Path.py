@@ -29,12 +29,8 @@ class Solution:
                 stack.append(inside)
             start = end
         
-        res = ""
-
-        for directory in stack:
-            res += "/" + directory 
 
 
-        return res if res else "/"
+        return "/" + "/".join(stack)
 
         
