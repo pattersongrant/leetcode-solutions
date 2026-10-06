@@ -28,8 +28,6 @@ class Solution:
             elif inside != ".":
                 stack.append(inside)
             start = end
-        
-
 
         return "/" + "/".join(stack)
 
