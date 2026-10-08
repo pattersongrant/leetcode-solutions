@@ -1,12 +1,8 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        
         # have a set that you add and remove from of available nums
         # have a result set of tuples
         # use dfs to go through taking or skipping every element at every position
-
-
-
         available = Counter(nums)
         self.res = set()
         def dfs(available, cur):
