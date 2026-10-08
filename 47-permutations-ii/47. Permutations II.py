@@ -4,11 +4,11 @@ class Solution:
         # have a result set of tuples
         # use dfs to go through taking or skipping every element at every position
         available = Counter(nums)
-        self.res = set()
+        self.res = []
         def dfs(available, cur):
 
             if len(cur) == len(nums):
-                self.res.add(tuple(cur))
+                self.res.append(cur.copy())
                 return
 
             for num in available:
@@ -21,4 +21,4 @@ class Solution:
                 cur.pop()
             
         dfs(available, [])
-        return [list(tup) for tup in self.res]
+        return self.res
