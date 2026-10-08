@@ -25,7 +25,4 @@ class Solution:
                 cur.pop()
             
         dfs(available, [])
-        res = []
-        for tup in self.res:
-            res.append(list(tup))
-        return res
+        return [list(tup) for tup in self.res]
