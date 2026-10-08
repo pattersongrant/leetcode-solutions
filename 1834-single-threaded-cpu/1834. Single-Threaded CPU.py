@@ -13,8 +13,6 @@ class Solution:
         for t in checkTimes:
             heapq.heappush(checkHeap, t)
         
-        checkTimes.sort()
-        checkTimes.append(checkTimes[-1]+1)
         selectHeap = []
         freeAt = 0
         res = []
