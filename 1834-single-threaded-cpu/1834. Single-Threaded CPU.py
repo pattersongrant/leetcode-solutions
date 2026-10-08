@@ -2,16 +2,16 @@ class Solution:
     def getOrder(self, tasks: List[List[int]]) -> List[int]:
 
         available = defaultdict(list)
-        checkTimes = set()
-        for i in range(len(tasks)):
-            checkTimes.add(tasks[i][0]) 
-            checkTimes.add(tasks[i][0]+tasks[i][1])
-            available[tasks[i][0]].append([tasks[i][1], i])
-        checkSet = checkTimes
-        checkTimes = list(checkTimes)
+        checkSet = set()
         checkHeap = []
-        for t in checkTimes:
-            heapq.heappush(checkHeap, t)
+        for i in range(len(tasks)):
+            if tasks[i][0] not in checkSet:
+                heapq.heappush(checkHeap, tasks[i][0])
+            if tasks[i][0]+tasks[i][1] not in checkSet:
+                heapq.heappush(checkHeap, (tasks[i][0]+tasks[i][1]))
+            checkSet.add(tasks[i][0])
+            checkSet.add(tasks[i][0]+tasks[i][1])
+            available[tasks[i][0]].append([tasks[i][1], i])
         
         selectHeap = []
         freeAt = 0
