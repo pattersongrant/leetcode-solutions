@@ -4,7 +4,6 @@ class Solution:
         highBound = k-1
         bestLowBound = 0
         bestHighBound = k-1
-
         tot = 0
         for i in range(highBound+1):
             tot += abs(arr[i]-x)
