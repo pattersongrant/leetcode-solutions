@@ -9,10 +9,8 @@ class Solution:
         for i in range(highBound+1):
             tot += abs(arr[i]-x)
         res = tot
-        print(lowBound,highBound,tot)
         
         while highBound < len(arr)-1:
-            print(lowBound,highBound,tot)
             tot -= abs(arr[lowBound]-x)
             highBound +=1
             lowBound += 1
