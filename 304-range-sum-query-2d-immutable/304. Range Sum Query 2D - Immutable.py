@@ -10,7 +10,6 @@ class NumMatrix:
                 left = self.sumMat[r][c-1]
                 double = self.sumMat[r-1][c-1]
                 self.sumMat[r][c] = above + left + matrix[r-1][c-1] - double
-        print(self.sumMat)
 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
         row1 += 1
