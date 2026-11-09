@@ -3,7 +3,7 @@ class Solution:
         l, r = 0, 0
         res = float('inf')
         s = 0
-        while l < len(nums) and res != 1:
+        while l < len(nums):
             if s >= target:
                 res = min(r-l, res)
                 s -= (nums[l])
