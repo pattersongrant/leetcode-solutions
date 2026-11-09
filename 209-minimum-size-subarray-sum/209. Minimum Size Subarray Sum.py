@@ -4,12 +4,10 @@ class Solution:
         res = float('inf')
         s = 0
         while l < len(nums):
-
             if s >= target:
                 res = min(r-l, res)
                 s -= (nums[l])
                 l += 1
-            
             else:
                 if r == len(nums):
                     break
