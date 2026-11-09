@@ -13,7 +13,6 @@ class Solution:
             for w in weights:
                 s += w
                 if s > m:
-                    print(m, s-w, w)
                     s = w
                     trips += 1
             if s > 0:
@@ -22,7 +21,6 @@ class Solution:
             if trips <= days:
                 r = m - 1
                 res = m
-                print("res:",res)
             elif trips > days:
                 l = m + 1
         return res
