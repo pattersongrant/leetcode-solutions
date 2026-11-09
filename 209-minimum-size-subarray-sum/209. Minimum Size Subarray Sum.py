@@ -3,18 +3,13 @@ class Solution:
         l, r = 0, 0
         res = float('inf')
         s = 0
-        while l < len(nums):
-            if s < target:
-                while s < target and r < len(nums):
-                    s += nums[r]
-                    r += 1
-                if r == len(nums) and s < target:
-                    break
-            else:
-                while s >= target:
-                    s -= (nums[l])
-                    l += 1
+        for r in range(len(nums)):
+            s += nums[r]
+            while s >= target:
                 res = min(r+1-l, res)
+                s -= (nums[l])
+                l += 1
+                
 
         return res if res != float('inf') else 0
 
