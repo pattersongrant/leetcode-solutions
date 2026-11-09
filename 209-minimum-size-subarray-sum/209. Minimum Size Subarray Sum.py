@@ -5,10 +5,11 @@ class Solution:
         s = 0
         while l < len(nums):
             if s < target:
-                if r == len(nums):
+                while s < target and r < len(nums):
+                    s += nums[r]
+                    r += 1
+                if r == len(nums) and s < target:
                     break
-                s += nums[r]
-                r += 1
             else:
                 while s >= target:
                     s -= (nums[l])
