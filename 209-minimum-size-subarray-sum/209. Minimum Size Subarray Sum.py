@@ -11,9 +11,9 @@ class Solution:
                 r += 1
             else:
                 while s >= target:
-                    res = min(r-l, res)
                     s -= (nums[l])
                     l += 1
+                res = min(r+1-l, res)
 
         return res if res != float('inf') else 0
 
