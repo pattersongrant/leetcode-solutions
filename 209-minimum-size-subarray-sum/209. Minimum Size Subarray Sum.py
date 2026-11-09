@@ -10,9 +10,10 @@ class Solution:
                 s += nums[r]
                 r += 1
             else:
-                res = min(r-l, res)
-                s -= (nums[l])
-                l += 1
+                while s >= target:
+                    res = min(r-l, res)
+                    s -= (nums[l])
+                    l += 1
 
         return res if res != float('inf') else 0
 
