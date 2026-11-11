@@ -8,20 +8,18 @@ class Solution:
             
         cache[(0,0)] = 1
 
-        def dfs(r, c):
+        for r in range(ROWS):
+            for c in range(COLS):
+                if (r,c) == (0,0):
+                    continue
+                if obstacleGrid[r][c] == 1:
+                    cache[(r,c)] = 0
+                    continue
+                up, left = 0, 0
+                if r-1 >= 0:
+                    up = cache[(r-1,c)]
+                if c-1 >= 0:
+                    left = cache[(r,c-1)]
+                cache[(r,c)] = up + left
 
-            if (r,c) in cache:
-                return cache[(r,c)]
-            if obstacleGrid[r][c] == 1:
-                return 0
-
-            up, left = 0, 0
-            if r-1 >= 0:
-                up = dfs(r-1,c)
-            if c-1 >= 0:
-                left = dfs(r,c-1)
-
-            cache[(r,c)] = up + left
-            return cache[(r,c)]
-        
-        return dfs(ROWS-1, COLS-1)
+        return cache[(ROWS-1,COLS-1)]
