@@ -6,10 +6,8 @@ class Solution:
         total = nums[0]
 
         for n in nums[1:]:
-
             curMin = min(n, curMin+n)
             globMin = min(curMin, globMin)
-
             curMax = max(n, curMax+n)
             globMax = max(curMax, globMax)
             total += n
