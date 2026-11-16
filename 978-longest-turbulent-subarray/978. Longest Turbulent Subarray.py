@@ -20,14 +20,13 @@ class Solution:
             if arr[i-1] > arr[i]:
                 if last == 2:
                     cur += 1
-                    res = max(res, cur)
                 else:
                     cur = 2
+                res = max(res,cur)
                 last = 1
             elif arr[i-1] < arr[i]:
                 if last == 1:
                     cur += 1
-                    res = max(res,cur)
                 else:
                     cur = 2
                 res = max(res,cur)
